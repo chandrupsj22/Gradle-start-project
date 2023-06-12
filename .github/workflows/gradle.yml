@@ -43,7 +43,7 @@ jobs:
           git config user.email chandrupsj22@users.noreply.github.com
           
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@main
       with:
           github_token: ${{ secrets.PAT }}
     - name: Build with Gradle
