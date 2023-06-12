@@ -54,7 +54,7 @@ jobs:
         path: build-artifacts
     - name: Execute Application
       run: |
-        tar -xf build-artifacts/distributions/java-gradle-starter-project.tar -C build-artifacts/distributions/
+        tar -xf build-artifacts/distributions/java-gradle-starter-project.tar
         # Replace the following command with the actual command to run your application
         java -jar build-artifacts/distributions/java-gradle-starter-project.jar  
       
