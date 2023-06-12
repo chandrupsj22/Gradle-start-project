@@ -51,4 +51,4 @@ jobs:
         name: build-artifacts
         path: build-artifacts
     - name: List Artifact Contents
-      run: ls -R build-artifacts/    
+      run: ls -R build-artifacts/distributions    
