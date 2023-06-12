@@ -43,4 +43,15 @@ jobs:
         name: build-artifacts
         path: build-artifacts
     - name: List Artifact Contents
-      run: ls -R build-artifacts/distributions    
+      run: ls -R build-artifacts/distributions  
+    - name: Download and Extract Artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifacts
+        path: build-artifacts
+    - name: Execute Application
+      run: |
+        tar -xf build-artifacts/archive.tar.gz -C build-artifacts/
+        # Replace the following command with the actual command to run your application
+        java -jar build-artifacts/java-gradle-starter-project.jar  
+      
