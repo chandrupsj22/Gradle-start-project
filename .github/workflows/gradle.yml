@@ -52,11 +52,11 @@ jobs:
       with:
         name: build-artifacts
         path: build-artifacts
+    - name: Make gradlew executable
+      run: |
+        chmod +x build-artifacts/gradlew
     - name: Execute Application
       run: |
-        tar -xf build-artifacts/distributions/java-gradle-starter-project.tar -C build-artifacts/
-        echo "The .jar file name is: $(find build-artifacts/ -name '*.jar')"
         cd build-artifacts
         ./gradlew run
-    
     
