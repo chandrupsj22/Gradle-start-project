@@ -57,6 +57,6 @@ jobs:
         tar -xf build-artifacts/distributions/java-gradle-starter-project.tar -C build-artifacts/
         echo "The .jar file name is: $(find build-artifacts/ -name '*.jar')"
         # Replace the following command with the actual command to run your application
-        java -jar build-artifacts/distributions/java-gradle-starter-project.jar  
+        java -jar build-artifacts/java-gradle-starter-project/lib/java-gradle-starter-project.jar 
     
     
