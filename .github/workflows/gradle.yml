@@ -21,6 +21,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: Set up Git
+      run: |
+          git config --global user.name "chandrupsj22"
+          git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
     - name: Create tag
       run: |
           git tag -a v${{ github.run_number }} -m "Tag created by GitHub Actions"
