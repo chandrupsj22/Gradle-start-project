@@ -54,16 +54,5 @@ jobs:
         name: build-artifacts
         path: build-artifacts
     - name: List Artifact Contents
-      run: ls -R build-artifacts/distributions  
-    - name: Download and Extract Artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: build-artifacts
-        path: build-artifacts
-    - name: Run with Xvfb
-      run: |
-        export DISPLAY=:99
-        Xvfb :99 -screen 0 1024x768x16 &
-        cd build
-        ./gradlew run
+      run: ls -R build-artifacts/distributions
     
