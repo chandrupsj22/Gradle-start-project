@@ -42,7 +42,7 @@ jobs:
           git tag ${{ needs.build.outputs.new_tag }}
           git push origin ${{ needs.build.outputs.new_tag }}
       env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: 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
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
