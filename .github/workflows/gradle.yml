@@ -37,6 +37,9 @@ jobs:
       with:
         name: build-artifacts
         path: build/  
+    - name: Display .jar File Name
+      run: |
+        echo "The .jar file name is: $(find build/ -name '*.jar')"
     - name: Download and List Artifacts
       uses: actions/download-artifact@v2
       with:
@@ -51,10 +54,9 @@ jobs:
         path: build-artifacts
     - name: Execute Application
       run: |
-        tar -xf build-artifacts/distributions/java-gradle-starter-project.tar
+        tar -xf build-artifacts/distributions/java-gradle-starter-project.tar -C build-artifacts/
+        echo "The .jar file name is: $(find build-artifacts/ -name '*.jar')"
         # Replace the following command with the actual command to run your application
         java -jar build-artifacts/distributions/java-gradle-starter-project.jar  
-    - name: Display .jar File Name1
-      run: |
-        echo "The .jar file name is: $(find build/ -name '*.jar')"
-      
+    
+    
