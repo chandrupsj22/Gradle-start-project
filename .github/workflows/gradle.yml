@@ -37,3 +37,11 @@ jobs:
       with:
         name: build-artifacts
         path: build/  
+    - name: View Build Artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifacts
+    - name: List Artifacts
+      run: |
+        echo "Build Artifacts:"
+        ls ${{ steps.view.outputs.artifact_folder }}    
