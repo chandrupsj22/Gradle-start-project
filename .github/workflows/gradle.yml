@@ -21,10 +21,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - name: Set up Git user
-      run: |
-        git config --global user.name "chandrupsj22"
-        git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
     - name: Determine latest tag and increment version
       id: tag
       run: |
@@ -38,8 +34,7 @@ jobs:
       run: |
           git tag ${{ needs.build.outputs.new_tag }}
           git push origin main ${{ needs.build.outputs.new_tag }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+      
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
