@@ -28,6 +28,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+    - name: Install Xvfb
+      run: |
+        sudo apt-get update
+        sudo apt-get install xvfb
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
@@ -56,10 +60,10 @@ jobs:
       with:
         name: build-artifacts
         path: build-artifacts
-    - name: Make gradlew executable
+    - name: Run with Xvfb
       run: |
-        chmod +x gradlew
-    - name: Execute Application
-      run: |
+        export DISPLAY=:99
+        Xvfb :99 -screen 0 1024x768x16 &
+        cd build-artifacts
         ./gradlew run
     
