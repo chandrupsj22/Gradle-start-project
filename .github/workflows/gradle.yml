@@ -42,10 +42,13 @@ jobs:
           git config user.name chandrupsj22
           git config user.email 110910097+chandrupsj22@users.noreply.github.com
           
-    - name: Push changes
-      uses: ad-m/github-push-action@main
+    - name: Create and push new tag
+      run: |
+          git tag ${{ needs.build.outputs.new_tag }}
+          git push origin main ${{ needs.build.outputs.new_tag }}
+          github-token: ${{ secrets.PAT }}
       env:
-          github_token: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{ secrets.PAT }}}
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
