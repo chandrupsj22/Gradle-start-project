@@ -37,14 +37,13 @@ jobs:
           new_minor_version=$((latest_minor_version + 1))
           new_tag="v$latest_major_version.$new_minor_version"
           echo "::set-output name=new_tag::$new_tag"
-      env:
-        GITHUB_TOKEN: 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
+          
     - name: Create and push new tag
       run: |
           git tag ${{ needs.build.outputs.new_tag }}
           git push origin ${{ needs.build.outputs.new_tag }}
       env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: ${{ secrets.PAT }}
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
