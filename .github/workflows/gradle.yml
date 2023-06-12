@@ -42,12 +42,13 @@ jobs:
       run: |
           git config --global user.name "chandrupsj22"
           git config --global user.email "chandru.nandha@outlook.com"
-
+      
     - name: Push to Git Repository
       env:
           GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
           GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
           GIT_REPOSITORY: github.com/chandrupsj22/Gradle-start-project.git
+          GITHUB_TOKEN: ${{ secrets.PAT }}
       run: |
           git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@$GIT_REPOSITORY
           git push origin HEAD
