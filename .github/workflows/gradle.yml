@@ -39,7 +39,7 @@ jobs:
         path: build/  
     - name: Display .jar File Name
       run: |
-        echo "The .jar file name is: $(ls build/*.jar)"
+        echo "The .jar file name is: $(find build/ -name '*.jar')"
     - name: Download and List Artifacts
       uses: actions/download-artifact@v2
       with:
