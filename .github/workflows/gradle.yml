@@ -29,8 +29,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Determine latest tag and increment version
+      id: tag
       run: |
-          latest_tag=$(git describe --tags --abbrev=0)
+          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0")
           latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
           latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
           new_minor_version=$((latest_minor_version + 1))
