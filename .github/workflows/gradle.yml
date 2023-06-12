@@ -37,6 +37,10 @@ jobs:
       with:
         name: build-artifacts
         path: build/  
+    - name: List Artifacts
+      run: |
+        echo "Build Artifacts:"
+        ls ${{ steps.view.outputs.artifact_folder }}
     - name: Display .jar File Name
       run: |
         echo "The .jar file name is: $(find build/ -name '*.jar')"
