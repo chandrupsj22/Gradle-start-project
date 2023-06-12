@@ -29,7 +29,7 @@ jobs:
          draft: false
          prerelease: false
       env:
-         GITHUB_TOKEN: ${{ secrets.PAT }}
+         GITHUB_TOKEN: ${{ secrets.PAT2 }}
     - name: Determine latest tag and increment version
       id: tag
       run: |
