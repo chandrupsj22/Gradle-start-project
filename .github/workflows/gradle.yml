@@ -33,4 +33,4 @@ jobs:
       with:
         arguments: build
     - name: Run with Gradle
-      run: .\gradlew.bat run    
+      run: ./gradlew.bat run    
