@@ -29,7 +29,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Determine latest tag and increment version
-        run:|
+      run: |
           latest_tag=$(git describe --tags --abbrev=0)
           latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
           latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
@@ -37,7 +37,7 @@ jobs:
           new_tag="v$latest_major_version.$new_minor_version"
           echo "::set-output name=new_tag::$new_tag"
     - name: Create and push new tag
-        run:|
+      run: |
           git tag ${{ needs.build.outputs.new_tag }}
           git push origin ${{ needs.build.outputs.new_tag }}
     - name: Build with Gradle
