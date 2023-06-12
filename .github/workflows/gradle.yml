@@ -39,9 +39,9 @@ jobs:
           echo "::set-output name=new_tag::$new_tag"
           
     - run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          npm version patch -m "[RELEASE] %s"
+          git config user.name chandrupsj22
+          git config user.email chandrupsj22@users.noreply.github.com
+          
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
