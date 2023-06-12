@@ -38,20 +38,14 @@ jobs:
           new_tag="v$latest_major_version.$new_minor_version"
           echo "::set-output name=new_tag::$new_tag"
           
-    - name: Configure Git
-      run: |
-          git config --global user.name "chandrupsj22"
-          git config --global user.email "chandru.nandha@outlook.com"
-      
-    - name: Push to Git Repository
-      env:
-          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
-          GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
-          GIT_REPOSITORY: github.com/chandrupsj22/Gradle-start-project.git
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-      run: |
-          git remote set-url origin https://$GIT_USERNAME:$GIT_PASSWORD@$GIT_REPOSITORY
-          git push origin HEAD
+    - run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          npm version patch -m "[RELEASE] %s"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+          github_token: ${{ secrets.PAT }}
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
