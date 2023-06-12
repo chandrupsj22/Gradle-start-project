@@ -41,7 +41,7 @@ jobs:
     - name: Create and push new tag
       run: |
           git tag ${{ needs.build.outputs.new_tag }}
-          git push origin ${{ needs.build.outputs.new_tag }}
+          git push origin main ${{ needs.build.outputs.new_tag }}
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
     - name: Build with Gradle
