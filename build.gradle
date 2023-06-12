@@ -47,13 +47,6 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.fxml', 'javafx.web', 'javafx.media' ]
 }
 
-jar {
-    manifest {
-        attributes(
-                'Main-Class': mainClassName
-        )
-    }
-}
 
 application {
     mainModule = "com.mycompany.app"
