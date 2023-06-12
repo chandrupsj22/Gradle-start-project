@@ -58,7 +58,7 @@ jobs:
         path: build-artifacts
     - name: Make gradlew executable
       run: |
-        chmod +x build/gradlew
+        chmod +x build-artifacts/gradlew
     - name: Execute Application
       run: |
         cd build-artifacts
