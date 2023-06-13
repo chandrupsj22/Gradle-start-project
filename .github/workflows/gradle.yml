@@ -37,13 +37,13 @@ jobs:
     
         while git rev-parse "$new_tag" >/dev/null 2>&1; do
         new_minor_version=$((new_minor_version + 1))
-        new_tag="v$latest_major_version.$new_minor_version"
+        new_tag="v$latest_major_version.$new_minor_version.${{ github.run_number }}"
         done
     
         echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
       run: |
-        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}
+        tag_name=${{ steps.latest_tag.outputs.new_tag }}
         git tag -a -m "Tag created by GitHub Actions" "$tag_name"
         git push origin "$tag_name"
                 
