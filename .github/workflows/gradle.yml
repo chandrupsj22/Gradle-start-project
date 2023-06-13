@@ -41,7 +41,7 @@ jobs:
           fi
     - name: Create tag
       run: |
-          git tag -a ${{ steps.latest_tag.outputs.new_tag }} -m "Tag created by GitHub Actions"
+          git tag ${{ steps.latest_tag.outputs.new_tag }} -m "Tag created by GitHub Actions"
           git push origin --tags
                 
     - name: Build with Gradle
