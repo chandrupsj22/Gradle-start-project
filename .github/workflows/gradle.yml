@@ -36,7 +36,7 @@ jobs:
         echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
       run: |
-          git tag -a v${{ new_tag }} -m "Tag created by GitHub Actions"
+          git tag -a ${{ steps.latest_tag.outputs.new_tag }} -m "Tag created by GitHub Actions"
           git push origin --tags
                 
     - name: Build with Gradle
