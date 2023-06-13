@@ -39,6 +39,8 @@ jobs:
       run: |
         git tag ${{ steps.latest_tag.outputs.tag }}
         git push origin ${{ steps.latest_tag.outputs.tag }}
+      env:
+          github_token: ${{ secrets.PAT }}
           
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
