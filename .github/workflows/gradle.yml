@@ -31,8 +31,8 @@ jobs:
           latest_tag=$(git describe --tags "v1.*" --abbrev=0 2>/dev/null || echo "v1.0")
           latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
           latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
-          #new_minor_version=$((latest_minor_version + 1))
-          #new_tag="v$latest_major_version.$new_minor_version"
+          new_minor_version=$((latest_minor_version + 1))
+          new_tag="v$latest_major_version.$new_minor_version"
           
           while git rev-parse "$new_tag" >/dev/null 2>&1; do
           new_minor_version=$((new_minor_version + 1))
