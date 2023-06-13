@@ -34,14 +34,11 @@ jobs:
         new_minor_version=$((latest_minor_version + 1))
         new_tag="v$latest_major_version.$new_minor_version"
         echo "::set-output name=new_tag::$new_tag"
-
-    - name: Push tag
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.PAT }}
-        branch: ${{ github.ref }}
-        tags: ${{ steps.latest_tag.outputs.tag }}
-          
+    - name: Create tag
+      run: |
+          git tag -a v${{ steps.latest_tag.outputs.tag }} -m "Tag created by GitHub Actions"
+          git push origin --tags
+                
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
