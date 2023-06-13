@@ -25,10 +25,31 @@ jobs:
       run: |
           git config --global user.name "chandrupsj22"
           git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
-    - name: Create tag
+    - name: Determine Latest Tag
+      id: latest_tag
       run: |
-          git tag -a v${{ github.run_number }} -m "Tag created by GitHub Actions"
-          git push origin --tags
+        latest_tag=$(git describe --abbrev=0 --tags "v1.*" 2>/dev/null)
+        if [ -z "$latest_tag" ]; then
+          echo "No previous tags found, starting with v1.0"
+          echo "::set-output name=tag::v1.0"
+        else
+          latest_minor=$(echo "$latest_tag" | awk -F'.' '{print $2}')
+          minor=$((latest_minor + 1))
+          echo "Latest tag: $latest_tag"
+          echo "Incremented minor version: $minor"
+          echo "::set-output name=tag::v1.$minor"
+        fi
+
+    - name: Create Git Tag
+      run: |
+        tag_name=${{ steps.latest_tag.outputs.tag }}
+        echo "Creating tag: $tag_name"
+        git tag "$tag_name"
+    - name: Push Git Tag
+      run: |
+        tag_name=${{ steps.latest_tag.outputs.tag }}
+        echo "Pushing tag: $tag_name"
+        git push origin "$tag_name"
           
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
