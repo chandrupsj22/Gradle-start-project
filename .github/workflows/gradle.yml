@@ -28,7 +28,7 @@ jobs:
     - name: Determine Latest Tag
       id: latest_tag
       run: |
-        latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0")
+        latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.0")
         latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
         latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
         new_minor_version=$((latest_minor_version + 1))
@@ -37,8 +37,8 @@ jobs:
 
     - name: Create and push new tag
       run: |
-        git tag ${{ needs.build.outputs.new_tag }}
-        git push origin ${{ needs.build.outputs.new_tag }}
+        git tag ${{ steps.latest_tag.outputs.tag }}
+        git push origin ${{ steps.latest_tag.outputs.tag }}
           
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
