@@ -39,7 +39,8 @@ jobs:
       run: |
         #repo_name=$(basename "${{ github.repository }}")
         workspc=$(basename "${{ github.workspace }}") #The directory where the repository is checked out in the runner.
-        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${workspc}
+        Branch=$(basename "${{ github.ref }}")
+        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${Branch}.${workspc}
         git tag -a -m "Tag created by GitHub Actions" "$tag_name"
         git push origin "$tag_name"
                 
