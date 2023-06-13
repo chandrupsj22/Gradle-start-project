@@ -27,23 +27,28 @@ jobs:
           git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
     - name: Determine Latest Tag
       id: latest_tag
+      run: echo ::set-output name=tag::$(git describe --tags `git rev-list --tags --max-count=1`)
+   
+    - name: Increment version
+      id: increment_version
       run: |
-          latest_tag=$(git describe --tags "v1.*" --abbrev=0 2>/dev/null || echo "v1.0")
-          latest_major_version= 1
-          latest_minor_version= $(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
-          new_minor_version=$((latest_minor_version + 1))
-          new_tag="v$latest_major_version.$new_minor_version"
-          
-          while git rev-parse "$new_tag" >/dev/null 2>&1; do
-          new_minor_version=$((new_minor_version + 1))
-          new_tag="v$latest_major_version.$new_minor_version"
-          done
-          echo "::set-output name=new_tag::$new_tag"
-    - name: Create tag
+          # Extract the current version
+          version=$(echo "${{ steps.get_latest_tag.outputs.tag }}" | sed -E 's/^v([0-9]+)\.([0-9]+)$/\1.\2/')
+
+          # Increment the minor version
+          new_version=$(echo "${version}" | awk -F. '{$2 = $2 + 1; print}' OFS=".")
+
+          # Set the new version as an output
+          echo ::set-output name=new_version::"${new_version}"
+
+    - name: Create new tag
+      id: create_tag
       run: |
-          tag_name=${{ steps.latest_tag.outputs.new_tag }}
-          git tag -a -m "Tag created by GitHub Actions" "$tag_name"
-          git push origin "$tag_name"
+          # Create a new tag with the incremented version
+          git tag -a "v${{ steps.increment_version.outputs.new_version }}" -m "Incremented version"
+
+          # Push the new tag
+          git push origin "v${{ steps.increment_version.outputs.new_version }}"
                 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
