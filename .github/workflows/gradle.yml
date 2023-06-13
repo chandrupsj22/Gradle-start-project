@@ -33,6 +33,11 @@ jobs:
           latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
           new_minor_version=$((latest_minor_version + 1))
           new_tag="v$latest_major_version.$new_minor_version"
+          
+          while git rev-parse "$new_tag" >/dev/null 2>&1; do
+          new_minor_version=$((new_minor_version + 1))
+          new_tag="v$latest_major_version.$new_minor_version"
+          done
           echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
       run: |
