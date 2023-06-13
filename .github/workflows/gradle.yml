@@ -32,7 +32,7 @@ jobs:
         latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
         latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
         latest_patch_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f3)
-    
+        #
         new_major_version=$latest_major_version
         new_minor_version=$latest_minor_version
         new_patch_version=$((latest_patch_version + 1))
