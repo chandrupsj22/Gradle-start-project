@@ -39,12 +39,12 @@ jobs:
         new_minor_version=$((new_minor_version + 1))
         new_tag="v$latest_major_version.$new_minor_version-$branch_name.${{ github.run_number }}-$branch_name"
         done
-        branch_name=$(git symbolic-ref --short HEAD)
+        branch_name=${{ github.ref }}"
         branch_name=${branch_name////-} 
         echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
       run: |
-        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}
+        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${{ github.ref_path }}
         git tag -a -m "Tag created by GitHub Actions" "$tag_name"
         git push origin "$tag_name"
                 
