@@ -28,17 +28,12 @@ jobs:
     - name: Determine Latest Tag
       id: latest_tag
       run: |
-        latest_tag=$(git describe --abbrev=0 --tags "v1.*" 2>/dev/null)
-        if [ -z "$latest_tag" ]; then
-          echo "No previous tags found, starting with v1.0"
-          echo "::set-output name=tag::v1.0"
-        else
-          latest_minor=$(echo "$latest_tag" | awk -F'.' '{print $2}')
-          minor=$((latest_minor + 1))
-          echo "Latest tag: $latest_tag"
-          echo "Incremented minor version: $minor"
-          echo "::set-output name=tag::v1.$minor"
-        fi
+        latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0")
+        latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
+        latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
+        new_minor_version=$((latest_minor_version + 1))
+        new_tag="v$latest_major_version.$new_minor_version"
+        echo "::set-output name=new_tag::$new_tag"
 
     - name: Create Git Tag
       run: |
