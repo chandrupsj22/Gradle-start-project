@@ -29,8 +29,8 @@ jobs:
       id: latest_tag
       run: |
         
-        latest_major_version= 1
-        latest_minor_version= 1
+        latest_major_version= "1"
+        latest_minor_version= "1"
           
         new_tag="v$latest_major_version.$new_minor_version"
             
