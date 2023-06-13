@@ -35,16 +35,10 @@ jobs:
         new_tag="v$latest_major_version.$new_minor_version"
         echo "::set-output name=new_tag::$new_tag"
 
-    - name: Create Git Tag
+    - name: Create and push new tag
       run: |
-        tag_name=${{ steps.latest_tag.outputs.tag }}
-        echo "Creating tag: $tag_name"
-        git tag "$tag_name"
-    - name: Push Git Tag
-      run: |
-        tag_name=${{ steps.latest_tag.outputs.tag }}
-        echo "Pushing tag: $tag_name"
-        git push origin "$tag_name"
+        git tag ${{ needs.build.outputs.new_tag }}
+        git push origin ${{ needs.build.outputs.new_tag }}
           
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
