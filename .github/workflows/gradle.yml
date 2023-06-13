@@ -29,21 +29,17 @@ jobs:
       id: latest_tag
       run: |
         latest_tag=$(git describe --abbrev=0 --tags 2>/dev/null || echo "v1.0")
-        latest_major_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f1)
-        latest_minor_version=$(echo $latest_tag | cut -d'v' -f2 | cut -d'.' -f2)
-    
-        new_minor_version=$((latest_minor_version + 1))
+        latest_major_version= 1
+        latest_minor_version= 1
+          
         new_tag="v$latest_major_version.$new_minor_version"
-    
-        while git rev-parse "$new_tag" >/dev/null 2>&1; do
-        new_minor_version=$((new_minor_version + 1))
-        new_tag="v$latest_major_version.$new_minor_version"
+            
         done
         
         echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
       run: |
-        repo_name=$(basename "${{ github.repository }}")
+        #repo_name=$(basename "${{ github.repository }}")
         workspc=$(basename "${{ github.workspace }}") #The directory where the repository is checked out in the runner.
         tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${workspc}
         git tag -a -m "Tag created by GitHub Actions" "$tag_name"
