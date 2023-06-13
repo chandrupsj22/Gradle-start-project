@@ -37,7 +37,7 @@ jobs:
     
         while git rev-parse "$new_tag" >/dev/null 2>&1; do
         new_minor_version=$((new_minor_version + 1))
-        new_tag="v$latest_major_version.$new_minor_version-$branch_name"
+        new_tag="v$latest_major_version.$new_minor_version-$branch_name.${{ github.run_number }}-$branch_name"
         done
         branch_name=$(git symbolic-ref --short HEAD)
         branch_name=${branch_name////-} 
