@@ -32,7 +32,7 @@ jobs:
         latest_major_version="1"
         latest_minor_version="1"
           
-        new_tag="v$latest_major_version.$new_minor_version"
+        new_tag="v$latest_major_version.$latest_minor_version"
           
         echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
