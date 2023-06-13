@@ -43,7 +43,7 @@ jobs:
         echo "::set-output name=new_tag::$new_tag"
     - name: Create tag
       run: |
-        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${{ github.ref_path }}
+        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${{ github.name }}
         git tag -a -m "Tag created by GitHub Actions" "$tag_name"
         git push origin "$tag_name"
                 
