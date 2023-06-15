@@ -50,7 +50,7 @@ jobs:
         #arguments: build
     - name: Build with Gradle
       run: |
-        ./gradlew build --no-daemon -g ${{ github.workspace }/${{ github.run_number }}
+        ./gradlew build --no-daemon -g "${{ github.workspace }/${{ github.run_number }}"
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
       with:
