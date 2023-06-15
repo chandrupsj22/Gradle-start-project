@@ -52,7 +52,7 @@ jobs:
     - name: Capture build file path
       id: capture-build-file-path
       run: |
-        echo "Build file path: ${{ steps.gradle-build.outputs.buildFile }}"
+        echo "Build file path:" ${{ steps.gradle-build.outputs.buildFile }}
         
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
