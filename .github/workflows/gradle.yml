@@ -46,7 +46,10 @@ jobs:
     - name: Build with Gradle
       run: |
         ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}" 
-    
+    - name: Find Build Path
+      run: |
+        BUILD_PATH=$(gradle properties -q | grep -m 1 "buildDir:" | awk '{print $2}')
+        echo "Java Build Path: $BUILD_PATH"
     - name: Rename Jar File
       run: |
         cd /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs/
