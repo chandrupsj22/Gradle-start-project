@@ -61,6 +61,15 @@ jobs:
       with:
         name: build-artifacts
         path: build/
+    - name: Find Build File
+      run: |
+          echo "Searching for build file..."
+          find . -name "build.gradle" -o -name "build.gradle.kts" | head -n 1 > build_file_location.txt
+
+    - name: Print Build File Location
+      run: |
+          echo "The build file is located at:"
+          cat build_file_location.txt
     - name: List Artifacts
       run: |
         echo "Build Artifacts:"
