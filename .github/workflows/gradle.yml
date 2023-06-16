@@ -45,14 +45,14 @@ jobs:
         git push origin "$tag_name"
     - name: Build with Gradle
       run: |
-        ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}"            
+        ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}" 
+        cd build/libs/
+        mv "java-gradle-starter-project-rename.jar" "java-gradle-starter-project-rename2.jar"
     - name: List Artifacts
       run: |
         echo "Build Artifacts:"
         ls ${{ steps.view.outputs.artifact_folder }}
-        cd build/libs/
-        mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
-        
+     
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
       with:
