@@ -56,7 +56,7 @@ jobs:
         echo "Build Artifacts:"
         ls ${{ steps.view.outputs.artifact_folder }}
         echo "Directory path"
-        ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/
+        ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs
      
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
