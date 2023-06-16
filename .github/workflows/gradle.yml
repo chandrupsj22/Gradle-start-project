@@ -46,33 +46,24 @@ jobs:
     - name: Build with Gradle
       run: |
         ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}" 
-    - name: Find Build Path
-      run: |
-          BUILD_PATH=$(gradle properties -q | grep -m 1 "buildDir:" | awk '{print $2}')
-          echo "Java Build Path: $BUILD_PATH"  
+    
     - name: Rename Jar File
       run: |
-        cd build/libs/
+        cd /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs/
         mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
     - name: List Artifacts
       run: |
         echo "Build Artifacts:"
         ls ${{ steps.view.outputs.artifact_folder }}
+        echo "Directory path"
+        ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/
      
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: build-artifacts
         path: build/
-    - name: Find Build File
-      run: |
-          echo "Searching for build file..."
-          find . -name "build.gradle" -o -name "build.gradle.kts" | head -n 1 > build_file_location.txt
-
-    - name: Print Build File Location
-      run: |
-          echo "The build file is located at:"
-          cat build_file_location.txt
+    
     - name: List Artifacts
       run: |
         echo "Build Artifacts:"
