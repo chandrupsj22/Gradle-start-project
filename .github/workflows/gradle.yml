@@ -50,7 +50,8 @@ jobs:
       run: |
         echo "Build Artifacts:"
         ls ${{ steps.view.outputs.artifact_folder }}
-    
+        cd build/libs/
+        mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
         
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
@@ -71,10 +72,7 @@ jobs:
         path: build-artifacts
     - name: List Artifact Contents
       run: ls -R build-artifacts/
-           cd build-artifacts/libs
-           mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
-    
-    
+      
     - name: List Artifacts after rename
       run: |
         echo "Build Artifacts:"
