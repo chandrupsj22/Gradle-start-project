@@ -47,7 +47,7 @@ jobs:
       run: |
         ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}" 
         cd build/libs/
-        mv "java-gradle-starter-project-rename.jar" "java-gradle-starter-project-rename2.jar"
+        mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
     - name: List Artifacts
       run: |
         echo "Build Artifacts:"
