@@ -50,6 +50,13 @@ jobs:
       run: |
         echo "Build Artifacts:"
         ls ${{ steps.view.outputs.artifact_folder }}
+    - name: Rename jar
+      run: | 
+        mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
+    - name: List Artifacts after rename
+      run: |
+        echo "Build Artifacts:"
+        ls ${{ steps.view.outputs.artifact_folder }}
         
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
