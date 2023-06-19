@@ -46,11 +46,9 @@ jobs:
     - name: Create and push tag
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
-          version1=$(echo "$version" | tr -d '?')
-          echo "$version1" 
           #tagss="$branch_REPUI_BLD${{ github.run_number }}$version"
           Branch=$(basename "${{ github.ref }}")
-          tagss=${Branch}_REPUI_BLD.${{ github.run_number }}-${version1}
+          tagss=${Branch}_REPUI_BLD.${{ github.run_number }}${version}
           #tagss="${Branch}.${{ github.run_number }}"
           tagss=$(echo "$tagss" | tr -d '?') 
           #echo "$tagss"
