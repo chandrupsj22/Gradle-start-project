@@ -42,7 +42,12 @@ jobs:
     - name: Fetch version from package.json
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
-          echo "$version" #
+          echo "$version" 
+    - name: Create and push tag
+        run: |
+          tag="$branch-REPUI-BLD${{ github.run_number }}-$version"
+          git tag $tag
+          git push origin $tag
     - name: Create tag
       run: |
         #repo_name=$(basename "${{ github.repository }}")
