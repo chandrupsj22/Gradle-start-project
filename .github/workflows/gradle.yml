@@ -46,7 +46,7 @@ jobs:
     - name: Create and push tag
       run: |
           #tagss="$branch_REPUI_BLD${{ github.run_number }}$version"
-          tagss="${branch}${{ github.run_number }}${version}"
+          tagss="${branch}.${{ github.run_number }}.${version}"
           echo "$tags"
           git tag -a -m "Tag created by GitHub" "$tagss"
           git push origin "$tagss"
