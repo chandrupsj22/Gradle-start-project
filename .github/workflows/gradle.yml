@@ -45,6 +45,8 @@ jobs:
           echo "$version" 
     - name: Create and push tag
       run: |
+          version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
+          echo "$version" 
           #tagss="$branch_REPUI_BLD${{ github.run_number }}$version"
           Branch=$(basename "${{ github.ref }}")
           tagss="${Branch}_REPUI_BLD.${{ github.run_number }}-${version}"
