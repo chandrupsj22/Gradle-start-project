@@ -45,9 +45,10 @@ jobs:
           echo "$version" 
     - name: Create and push tag
       run: |
-          tag="$branch""-REPUI-BLD${{ github.run_number }}-$version"
-          git tag -a "$tag"
-          git push origin "$tag"
+          tags="$branch""-REPUI-BLD${{ github.run_number }}-$version"
+          echo "$tags"
+          git tag -a "$tags"
+          git push origin "$tags"
     - name: Create tag
       run: |
         #repo_name=$(basename "${{ github.repository }}")
