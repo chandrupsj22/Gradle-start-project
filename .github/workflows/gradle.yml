@@ -47,7 +47,7 @@ jobs:
       run: |
           tags='$branch_REPUI_BLD${{ github.run_number }}_$version'
           echo "$tags"
-          git tag -a "$tags"
+          git tag -a -m "Tag created by GitHub Actions" "$tags"
           git push origin "$tags"
     - name: Create tag
       run: |
