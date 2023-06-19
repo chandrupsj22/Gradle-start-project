@@ -55,14 +55,14 @@ jobs:
           #echo "$tagss"
           git tag -a -m "Tag created by GitHub" "$tagss"
           git push origin "$tagss"
-    - name: Create tag
-      run: |
+    #- name: Create tag
+      #run: |
         #repo_name=$(basename "${{ github.repository }}")
-        workspace=$(basename "${{ github.workspace }}") #The directory where the repository is checked out in the runner.
-        Branch=$(basename "${{ github.ref }}")
-        tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${Branch}.${workspace}
-        git tag -a -m "Tag created by GitHub Actions" "$tag_name"
-        git push origin "$tag_name"
+        #workspace=$(basename "${{ github.workspace }}") #The directory where the repository is checked out in the runner.
+        #Branch=$(basename "${{ github.ref }}")
+        #tag_name=${{ steps.latest_tag.outputs.new_tag }}.${{ github.run_number }}.${Branch}.${workspace}
+        #git tag -a -m "Tag created by GitHub Actions" "$tag_name"
+        #git push origin "$tag_name"
     - name: Build with Gradle
       run: |
         ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}" 
