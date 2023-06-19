@@ -38,6 +38,7 @@ jobs:
     - name: Get current branch
       run: |
           branch=$(git symbolic-ref --short HEAD)
+          echo "$branch"
     - name: Create tag
       run: |
         #repo_name=$(basename "${{ github.repository }}")
