@@ -47,7 +47,7 @@ jobs:
       run: |
           #tagss="$branch_REPUI_BLD${{ github.run_number }}$version"
           Branch=$(basename "${{ github.ref }}")
-          tagss="${Branch}_REPUI_BLD.${{ github.run_number }}$version"
+          tagss="${Branch}_REPUI_BLD.${{ github.run_number }}.${version}"
           #tagss="${Branch}.${{ github.run_number }}"
           echo "$tagsS"
           git tag -a -m "Tag created by GitHub" "$tagss"
