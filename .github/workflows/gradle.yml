@@ -67,12 +67,12 @@ jobs:
       run: |
         cd /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs/
         mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
-    - name: List Artifacts
-      run: |
-        echo "Build Artifacts:"
-        ls ${{ steps.view.outputs.artifact_folder }}
-        echo "Directory path"
-        ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs
+#     - name: List Artifacts
+#       run: |
+#         echo "Build Artifacts:"
+#         ls ${{ steps.view.outputs.artifact_folder }}
+#         echo "Directory path"
+#         ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs
         
     - name: Create DEVbuild directory
       run: |
