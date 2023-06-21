@@ -35,8 +35,7 @@ jobs:
         new_tag="v$latest_major_version.$latest_minor_version"
           
         echo "::set-output name=new_tag::$new_tag"
-    - name: Create DEVbuild directory
-      run: mkdir DEVbuild
+    
     - name: Fetch version from package.json
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
@@ -74,6 +73,22 @@ jobs:
         ls ${{ steps.view.outputs.artifact_folder }}
         echo "Directory path"
         ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs
+        
+    - name: Create DEVbuild directory
+      run: |
+         mkdir DEVbuild
+         cp -r build/* DEVbuild
+         cd DEVbuild
+         tar cf ../DEVbuild.tar .
+    - name: Upload DEVbuild.tar artifact
+      uses: actions/upload-artifact@v2
+      with:
+          name: DEVbuild
+          path: DEVbuild.tar     
+    - name: List Artifacts
+      run: |
+        echo "Build Artifacts: DEVbuild.tar"
+        ls ${{ steps.view.outputs.artifact_folder }}
      
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
