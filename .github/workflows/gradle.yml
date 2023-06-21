@@ -90,7 +90,7 @@ jobs:
         echo "Build Artifacts: DEVbuild.tar"
         ls ${{ steps.view.outputs.DEVbuild }}
         echo "****BUILD****
-        ls /home/runner/work/Gradle-start-project/Gradle-start-project/build
+        ls /home/runner/work/Gradle-start-project/Gradle-start-project/
         echo "****DEVbuild****
         ls /home/runner/work/Gradle-start-project/Gradle-start-project/DEVbuild
      
