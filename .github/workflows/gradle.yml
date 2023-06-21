@@ -89,8 +89,11 @@ jobs:
       run: |
         echo "Build Artifacts: DEVbuild.tar"
         ls ${{ steps.view.outputs.DEVbuild }}
-        echo "****BUILD****
+        echo "****BUILD****"
         ls /home/runner/work/Gradle-start-project/Gradle-start-project/build
+        echo "****DEVBUILD****"
+        ls /home/runner/work/Gradle-start-project/Gradle-start-project/DEVbuild
+        
              
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
