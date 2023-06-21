@@ -121,3 +121,24 @@ jobs:
       run: |
         echo "Build Artifacts:"
         ls ${{ steps.view.outputs.artifact_folder }}
+    - name: Build with Gradle
+      run: |
+        ./gradlew build --no-daemon -g "${{ github.workspace }}/${{ github.run_number }}" 
+    - name: Create Prodbuild directory
+      run: |
+         mkdir Prodbuild
+         cp -r build/* Prodbuild
+         cd Prodbuild
+         tar cf ../Prodbuild.tar .
+    - name: Upload Prodbuild.tar artifact
+      uses: actions/upload-artifact@v2
+      with:
+          name: Prodbuild
+          path: Prodbuild.tar     
+    - name: List Artifacts
+      run: |
+        echo "Build Artifacts: Prodbuild.tar"
+        ls ${{ steps.view.outputs.Prodbuild }}
+        echo "****PRODBUILD****"
+        ls /home/runner/work/Gradle-start-project/Gradle-start-project/Prodbuild 
+   
