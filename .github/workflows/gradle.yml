@@ -74,25 +74,23 @@ jobs:
 #         echo "Directory path"
 #         ls /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs
         
-    - name: Create DEVbuild directory
+    - name: Create DEVebuild directory
       run: |
-         mkdir DEVbuild
-         cp -r build/* DEVbuild
-         cd DEVbuild
-         tar cf ../DEVbuild.tar .
-    - name: Upload DEVbuild.tar artifact
+         mkdir DEVebuild
+         cp -r build/* DEVebuild
+         cd DEVebuild
+         tar cf ../DEVebuild.tar .
+    - name: Upload DEVebuild.tar artifact
       uses: actions/upload-artifact@v2
       with:
-          name: DEVbuild
-          path: DEVbuild.tar     
+          name: DEVebuild
+          path: DEVebuild.tar     
     - name: List Artifacts
       run: |
-        echo "Build Artifacts: DEVbuild.tar"
-        ls ${{ steps.view.outputs.DEVbuild }}
-        echo "****BUILD****"
-        ls /home/runner/work/Gradle-start-project/Gradle-start-project/build
+        echo "Build Artifacts: DEVebuild.tar"
+        ls ${{ steps.view.outputs.DEVebuild }}
         echo "****DEVBUILD****"
-        ls /home/runner/work/Gradle-start-project/Gradle-start-project/DEVbuild
+        ls /home/runner/work/Gradle-start-project/Gradle-start-project/DEVebuild
         
              
     - name: Upload Build Artifacts
