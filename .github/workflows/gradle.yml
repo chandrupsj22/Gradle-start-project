@@ -88,7 +88,7 @@ jobs:
     - name: List Artifacts
       run: |
         echo "Build Artifacts: DEVbuild.tar"
-        ls ${{ steps.view.outputs.artifact_folder }}
+        ls ${{ steps.view.outputs.DEVbuild }}
         echo "****BUILD****
         ls /home/runner/work/Gradle-start-project/Gradle-start-project/build
         echo "****DEVbuild****
