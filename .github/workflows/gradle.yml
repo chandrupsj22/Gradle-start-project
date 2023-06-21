@@ -36,7 +36,7 @@ jobs:
           
         echo "::set-output name=new_tag::$new_tag"
     - name: Create DEVbuild directory
-      run: mkdir ${{ env.bamboo_DEVbuild }}
+      run: mkdir DEVbuild
     - name: Fetch version from package.json
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
