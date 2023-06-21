@@ -91,9 +91,7 @@ jobs:
         ls ${{ steps.view.outputs.DEVbuild }}
         echo "****BUILD****
         ls /home/runner/work/Gradle-start-project/Gradle-start-project/build
-        #echo "****DEVbuild****
-        #ls /home/runner/work/Gradle-start-project/Gradle-start-project/DEVbuild
-     
+             
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v2
       with:
