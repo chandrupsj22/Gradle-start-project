@@ -23,11 +23,36 @@ ext {
     arcgisVersion = '200.1.0'
 }
 
+// repositories {
+//     mavenCentral()
+//     maven {
+//         url 'https://esri.jfrog.io/artifactory/arcgis'
+//     }
+// }
+
 repositories {
-    mavenCentral()
+    mavenLocal()
+	mavenCentral()
     maven {
-        url 'https://esri.jfrog.io/artifactory/arcgis'
+          url "http://rhecombldapp01.sterling.com:18080/repository/internal"
+          credentials {
+            username = properties['repo.USERNAME']
+            password = properties['repo.USERNAME']
+        }
     }
+	maven {
+		url "http://rhecombldapp01.sterling.com:18080/repository/snapshots"
+        credentials {
+            username = properties['repo.USERNAME']
+            password = properties['repo.USERNAME']
+        }
+	}  
+    /* Changed by PB 
+     * Date - May 3rd, 2021
+     * Comment - No longer available, uploaded the artifacts to internal snapshot repo
+     * maven {
+        //url "http://dl.bintray.com/msopentech/Maven"
+    }*/
 }
 
 configurations {
