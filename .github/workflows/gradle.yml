@@ -38,6 +38,7 @@ jobs:
           # You can use the replaced credentials here to perform any necessary actions
           echo "Username: ${{ secrets.USERNAME }}"
           echo "Password: ${{ secrets.PASSWORD }}"
+          ls /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
 
     - name: Display File Content
       run: cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
