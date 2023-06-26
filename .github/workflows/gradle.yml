@@ -46,9 +46,9 @@ jobs:
          tokenPrefix: '#{'
          tokenSuffix: '}#'
          files: '/home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle'
-      env:
-         username: ${{ secrets.USERNAME }}
-         password: ${{ secrets.PASSWORD }}  
+#       env:
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}  
         
     - name: display file.txt
       run: |
