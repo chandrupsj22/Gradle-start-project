@@ -25,14 +25,14 @@ jobs:
       run: |
           git config --global user.name "chandrupsj22"
           git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
-    - uses: cschleiden/replace-tokens@v1.2
-      with:
-         tokenPrefix: '#{'
-         tokenSuffix: '}#'
-         files: '**/*.txt'
-      env:
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}  
+#     - uses: cschleiden/replace-tokens@v1.2
+#       with:
+#          tokenPrefix: '#{'
+#          tokenSuffix: '}#'
+#          files: '**/*.txt'
+#       env:
+#           username: ${{ secrets.USERNAME }}
+#           password: ${{ secrets.PASSWORD }}  
     
     
     
