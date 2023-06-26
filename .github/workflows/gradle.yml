@@ -40,6 +40,18 @@ jobs:
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
           echo "$version" 
+    - uses: cschleiden/replace-tokens@v1
+      with:
+         tokenPrefix: '#{'
+         tokenSuffix: '}#'
+         files: '**/build.gradle'
+      env:
+         username: ${{ secrets.USERNAME }}
+         password: ${{ secrets.PASSWORD }}  
+        
+    - name: display file.txt
+      run: |
+        cat /home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle
     - name: Create and push tag
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
