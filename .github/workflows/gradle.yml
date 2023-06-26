@@ -40,7 +40,7 @@ jobs:
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
           echo "$version" 
-    - uses: cschleiden/replace-tokens@v1
+    - uses: cschleiden/replace-tokens@v1.2
       with:
          tokenPrefix: '#{'
          tokenSuffix: '}#'
