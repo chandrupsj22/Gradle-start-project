@@ -28,11 +28,16 @@ jobs:
     - name: display file.txt
       run: |
         cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
-    - name: Print Username
-      run: echo "username ${{ secrets.USERNAME }}" > file.txt
+    - name: Replace credentials in file
+      run: |
+          sed -i "s/{{USERNAME}}/${{ secrets.USERNAME }}/g" /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
+          sed -i "s/{{PASSWORD}}/${{ secrets.PASSWORD }}/g" /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
 
-    - name: List Files
-      run: ls
+    - name: Use credentials in workflow
+      run: |
+          # You can use the replaced credentials here to perform any necessary actions
+          echo "Username: ${{ secrets.USERNAME }}"
+          echo "Password: ${{ secrets.PASSWORD }}"
 
     - name: Display File Content
       run: cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
