@@ -28,7 +28,7 @@ jobs:
     - name: Determine Latest Tag
       id: latest_tag
       run: |
-        
+         
         latest_major_version="1"
         latest_minor_version="1"
           
