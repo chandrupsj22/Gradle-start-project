@@ -25,6 +25,14 @@ jobs:
       run: |
           git config --global user.name "chandrupsj22"
           git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
+    - uses: cschleiden/replace-tokens@v1.2
+      with:
+         tokenPrefix: '#{'
+         tokenSuffix: '}#'
+         files: '**/*.txt'
+      env:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}  
     - name: Determine Latest Tag
       id: latest_tag
       run: |
@@ -68,14 +76,7 @@ jobs:
         cd /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs/
         mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
     
-    - uses: cschleiden/replace-tokens@v1.2
-      with:
-         tokenPrefix: '#{'
-         tokenSuffix: '}#'
-         files: '**/*.txt'
-      env:
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}  
+    
 #     - name: List Artifacts
 #       run: |
 #         echo "Build Artifacts:"
