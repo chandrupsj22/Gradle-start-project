@@ -28,7 +28,6 @@ jobs:
     - name: Determine Latest Tag
       id: latest_tag
       run: |
-         
         latest_major_version="1"
         latest_minor_version="1"
           
@@ -46,9 +45,9 @@ jobs:
          tokenPrefix: '#{'
          tokenSuffix: '}#'
          files: '**/*.txt'
-#       env:
-#          username: ${{ secrets.USERNAME }}
-#          password: ${{ secrets.PASSWORD }}  
+      env:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}  
         
     - name: display file.txt
       run: |
