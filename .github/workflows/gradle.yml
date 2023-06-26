@@ -29,7 +29,7 @@ jobs:
       run: |
         cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
     - name: Print Username
-      run: echo ${{ secrets.USERNAME }} > file.txt
+      run: echo "username ${{ secrets.USERNAME }}" > file.txt
 
     - name: List Files
       run: ls
