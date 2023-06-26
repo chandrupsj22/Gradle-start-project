@@ -25,6 +25,9 @@ jobs:
       run: |
           git config --global user.name "chandrupsj22"
           git config --global user.email "133023965+chandru-kloudping@users.noreply.github.com"
+    - name: display file.txt
+      run: |
+        cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
 #     - uses: cschleiden/replace-tokens@v1.2
 #       with:
 #          tokenPrefix: '#{'
