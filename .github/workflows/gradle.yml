@@ -40,7 +40,7 @@ jobs:
           echo "Password: ${{ secrets.PASSWORD }}"
           echo " content in Gradle"
           cat /home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle
-
+ 
     - name: Display File Content
       run: cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
 #     - uses: cschleiden/replace-tokens@v1.2
