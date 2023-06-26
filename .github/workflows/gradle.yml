@@ -30,8 +30,8 @@ jobs:
         cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
     - name: Replace credentials in file
       run: |
-          sed -i "s/{{USERNAME}}/${{ secrets.USERNAME }}/g" /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
-          sed -i "s/{{PASSWORD}}/${{ secrets.PASSWORD }}/g" /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
+          sed -i "s/{{USERNAME}}/${{ secrets.USERNAME }}/g" /home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle
+          sed -i "s/{{PASSWORD}}/${{ secrets.PASSWORD }}/g" /home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle
 
     - name: Use credentials in workflow
       run: |
