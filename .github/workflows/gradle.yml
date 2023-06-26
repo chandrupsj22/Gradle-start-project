@@ -39,19 +39,7 @@ jobs:
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
           echo "$version" 
-    - name: replace token
-      uses: cschleiden/replace-tokens@v1.2
-      with:
-         tokenPrefix: '#{'
-         tokenSuffix: '}#'
-         files: '**/*.txt'
-      env:
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}  
-        
-    - name: display file.txt
-      run: |
-        cat /home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle
+    
     - name: Create and push tag
       run: |
           version=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')
@@ -79,6 +67,15 @@ jobs:
       run: |
         cd /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs/
         mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
+    
+    - uses: cschleiden/replace-tokens@v1.2
+      with:
+         tokenPrefix: '#{'
+         tokenSuffix: '}#'
+         files: '**/*.txt'
+      env:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}  
 #     - name: List Artifacts
 #       run: |
 #         echo "Build Artifacts:"
