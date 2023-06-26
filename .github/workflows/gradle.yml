@@ -28,6 +28,14 @@ jobs:
     - name: display file.txt
       run: |
         cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
+    - name: Print Username
+      run: echo ${{ secrets.USERNAME }} > file.txt
+
+    - name: List Files
+      run: ls
+
+    - name: Display File Content
+      run: cat /home/runner/work/Gradle-start-project/Gradle-start-project/file.txt
 #     - uses: cschleiden/replace-tokens@v1.2
 #       with:
 #          tokenPrefix: '#{'
