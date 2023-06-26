@@ -45,7 +45,7 @@ jobs:
       with:
          tokenPrefix: '#{'
          tokenSuffix: '}#'
-         files: '/home/runner/work/Gradle-start-project/Gradle-start-project/build.gradle'
+         files: '**/*.txt'
 #       env:
 #          username: ${{ secrets.USERNAME }}
 #          password: ${{ secrets.PASSWORD }}  
