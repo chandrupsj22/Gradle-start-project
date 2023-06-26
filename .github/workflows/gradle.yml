@@ -68,7 +68,7 @@ jobs:
         cd /home/runner/work/Gradle-start-project/Gradle-start-project/build/libs/
         mv "java-gradle-starter-project.jar" "java-gradle-starter-project-rename.jar"
     
-    - uses: cschleiden/replace-tokens@v1.2
+    - uses: cschleiden/replace-tokens@v1
       with:
          tokenPrefix: '#{'
          tokenSuffix: '}#'
