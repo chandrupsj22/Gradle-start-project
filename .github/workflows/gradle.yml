@@ -53,7 +53,7 @@ jobs:
 #           password: ${{ secrets.PASSWORD }}  
     - name: Install Custom Gradle Version
       run: |
-          export GRADLE_VERSION=<desired-gradle-version>
+          export GRADLE_VERSION=3.0
           wget "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip"
           unzip -qq "gradle-$GRADLE_VERSION-bin.zip"
           export PATH="$PWD/gradle-$GRADLE_VERSION/bin:$PATH"
