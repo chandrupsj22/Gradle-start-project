@@ -51,8 +51,12 @@ jobs:
 #       env:
 #           username: ${{ secrets.USERNAME }}
 #           password: ${{ secrets.PASSWORD }}  
-    - name: Run Gradle Versions Check
-      run: ./gradlew dependencyUpdates -Drevision=release
+    - name: Install Custom Gradle Version
+      run: |
+          export GRADLE_VERSION=<desired-gradle-version>
+          wget "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip"
+          unzip -qq "gradle-$GRADLE_VERSION-bin.zip"
+          export PATH="$PWD/gradle-$GRADLE_VERSION/bin:$PATH"
     
     
     
