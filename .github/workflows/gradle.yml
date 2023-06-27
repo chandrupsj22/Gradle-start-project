@@ -57,8 +57,10 @@ jobs:
           wget "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip"
           unzip -qq "gradle-$GRADLE_VERSION-bin.zip"
           export PATH="$PWD/gradle-$GRADLE_VERSION/bin:$PATH"
-    - name: Check Gradle Version
-      run: ./gradlew --version
+    #- name: Check Gradle Version
+    #  run: ./gradlew --version
+    - name: Check Gradle Versions
+      run: ./gradlew dependencyUpdates -Drevision=release
     
     
     
