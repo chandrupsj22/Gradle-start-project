@@ -51,6 +51,8 @@ jobs:
 #       env:
 #           username: ${{ secrets.USERNAME }}
 #           password: ${{ secrets.PASSWORD }}  
+    - name: Run Gradle Versions Check
+      run: ./gradlew dependencyUpdates -Drevision=release
     
     
     
