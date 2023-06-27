@@ -27,10 +27,7 @@ repositories {
     mavenCentral()
     maven {
         url 'https://esri.jfrog.io/artifactory/arcgis'
-        credentials {
-            username: {{USERNAME}}
-            password: {{PASSWORD}}
-        }   
+        
     }
 }
 
